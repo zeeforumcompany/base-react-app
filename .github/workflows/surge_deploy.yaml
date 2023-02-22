@@ -1,0 +1,19 @@
+name: React App Deployment on Surge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: action/checkout@v3
+      - run: action/setup-node@v3
+      - name: Install Node Dependencies
+        run: npm i
+      - name: Build React App
+        run: npm run build
+      - name: Deploy on Surge
+        run: surge ./ base-app-zeeforumcompany.surge.sh --token ${{ secrets.SURGE_TOKEN }}
