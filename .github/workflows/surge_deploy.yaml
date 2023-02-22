@@ -16,6 +16,8 @@ jobs:
           node-version: 16
       - name: Install Node Dependencies
         run: npm i
+      - name: Setup Surge
+        run: npm i -g surge
       - name: Build React App
         run: npm run build
       - name: Deploy on Surge
